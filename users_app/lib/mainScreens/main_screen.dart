@@ -391,11 +391,11 @@ class _MainScreenState extends State<MainScreen>
             double fareAmount = double.parse((eventSnap.snapshot.value as Map)["fareAmount"].toString());
 
             var response = await showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (BuildContext c) => PayFareAmountDialog(
-                    fareAmount: fareAmount,
-                ),
+              context: context,
+              barrierDismissible: false,
+              builder: (BuildContext c) => PayFareAmountDialog(
+                fareAmount: fareAmount,
+              ),
             );
 
             if(response == "cashPayed")
@@ -406,7 +406,7 @@ class _MainScreenState extends State<MainScreen>
                 String assignedDriverId = (eventSnap.snapshot.value as Map)["driverId"].toString();
 
                 Navigator.push(context, MaterialPageRoute(builder: (c)=> RateDriverScreen(
-                    assignedDriverId: assignedDriverId,
+                  assignedDriverId: assignedDriverId,
                 )));
 
                 referenceRideRequest!.onDisconnect();
@@ -431,8 +431,8 @@ class _MainScreenState extends State<MainScreen>
       LatLng userPickUpPosition = LatLng(userCurrentPosition!.latitude, userCurrentPosition!.longitude);
 
       var directionDetailsInfo = await AssistantMethods.obtainOriginToDestinationDirectionDetails(
-          driverCurrentPositionLatLng,
-          userPickUpPosition,
+        driverCurrentPositionLatLng,
+        userPickUpPosition,
       );
 
       if(directionDetailsInfo == null)
@@ -537,7 +537,7 @@ class _MainScreenState extends State<MainScreen>
             if(eventSnapshot.snapshot.value == "idle")
             {
               Fluttertoast.showToast(msg: "The driver has cancelled your request. Please choose another driver.");
-              
+
               Future.delayed(const Duration(milliseconds: 3000), ()
               {
                 Fluttertoast.showToast(msg: "Please Restart App Now.");
@@ -602,9 +602,9 @@ class _MainScreenState extends State<MainScreen>
 
         //send Notification Now
         AssistantMethods.sendNotificationToDriverNow(
-            deviceRegistrationToken,
-            referenceRideRequest!.key.toString(),
-            context,
+          deviceRegistrationToken,
+          referenceRideRequest!.key.toString(),
+          context,
         );
 
         Fluttertoast.showToast(msg: "Notification sent Successfully.");
@@ -827,8 +827,8 @@ class _MainScreenState extends State<MainScreen>
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          primary: Colors.green,
-                          textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
+                            primary: Colors.green,
+                            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
                         ),
                       ),
 
@@ -967,25 +967,25 @@ class _MainScreenState extends State<MainScreen>
                     //call driver button
                     Center(
                       child: ElevatedButton.icon(
-                          onPressed: ()
-                          {
+                        onPressed: ()
+                        {
 
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.green,
-                          ),
-                          icon: const Icon(
-                            Icons.phone_android,
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.green,
+                        ),
+                        icon: const Icon(
+                          Icons.phone_android,
+                          color: Colors.black54,
+                          size: 22,
+                        ),
+                        label: const Text(
+                          "Call Driver",
+                          style: TextStyle(
                             color: Colors.black54,
-                            size: 22,
+                            fontWeight: FontWeight.bold,
                           ),
-                          label: const Text(
-                            "Call Driver",
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -1007,8 +1007,8 @@ class _MainScreenState extends State<MainScreen>
     var destinationLatLng = LatLng(destinationPosition!.locationLatitude!, destinationPosition.locationLongitude!);
 
     showDialog(
-        context: context,
-        builder: (BuildContext context) => ProgressDialog(message: "Please wait...",),
+      context: context,
+      builder: (BuildContext context) => ProgressDialog(message: "Please wait...",),
     );
 
     var directionDetailsInfo = await AssistantMethods.obtainOriginToDestinationDirectionDetails(originLatLng, destinationLatLng);
@@ -1058,8 +1058,8 @@ class _MainScreenState extends State<MainScreen>
     else if(originLatLng.longitude > destinationLatLng.longitude)
     {
       boundsLatLng = LatLngBounds(
-          southwest: LatLng(originLatLng.latitude, destinationLatLng.longitude),
-          northeast: LatLng(destinationLatLng.latitude, originLatLng.longitude),
+        southwest: LatLng(originLatLng.latitude, destinationLatLng.longitude),
+        northeast: LatLng(destinationLatLng.latitude, originLatLng.longitude),
       );
     }
     else if(originLatLng.latitude > destinationLatLng.latitude)
@@ -1134,8 +1134,8 @@ class _MainScreenState extends State<MainScreen>
         //longitude will be retrieved from map['longitude']
 
         switch (callBack)
-        {
-          //whenever any driver become active/online
+            {
+        //whenever any driver become active/online
           case Geofire.onKeyEntered:
             ActiveNearbyAvailableDrivers activeNearbyAvailableDriver = ActiveNearbyAvailableDrivers();
             activeNearbyAvailableDriver.locationLatitude = map['latitude'];
@@ -1148,13 +1148,13 @@ class _MainScreenState extends State<MainScreen>
             }
             break;
 
-          //whenever any driver become non-active/offline
+        //whenever any driver become non-active/offline
           case Geofire.onKeyExited:
             GeoFireAssistant.deleteOfflineDriverFromList(map['key']);
             displayActiveDriversOnUsersMap();
             break;
 
-          //whenever driver moves - update driver location
+        //whenever driver moves - update driver location
           case Geofire.onKeyMoved:
             ActiveNearbyAvailableDrivers activeNearbyAvailableDriver = ActiveNearbyAvailableDrivers();
             activeNearbyAvailableDriver.locationLatitude = map['latitude'];
@@ -1164,7 +1164,7 @@ class _MainScreenState extends State<MainScreen>
             displayActiveDriversOnUsersMap();
             break;
 
-          //display those online/active drivers on user's map
+        //display those online/active drivers on user's map
           case Geofire.onGeoQueryReady:
             activeNearbyDriverKeysLoaded = true;
             displayActiveDriversOnUsersMap();

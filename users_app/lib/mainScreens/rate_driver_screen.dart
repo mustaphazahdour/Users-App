@@ -25,17 +25,17 @@ class _RateDriverScreenState extends State<RateDriverScreen>
   Widget build(BuildContext context)
   {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Dialog(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(14),
         ),
-        backgroundColor: Colors.white60,
+        backgroundColor: Colors.black,
         child: Container(
           margin: const EdgeInsets.all(8),
           width: double.infinity,
           decoration: BoxDecoration(
-            color: Colors.white54,
+            color: Colors.white,
             borderRadius: BorderRadius.circular(6),
           ),
           child: Column(
@@ -64,8 +64,8 @@ class _RateDriverScreenState extends State<RateDriverScreen>
                 rating: countRatingStars,
                 allowHalfRating: false,
                 starCount: 5,
-                color: Colors.green,
-                borderColor: Colors.green,
+                color:Color(0xFFFAC213),
+                borderColor: Color(0xFFFAC213),
                 size: 46,
                 onRatingChanged: (valueOfStarsChoosed)
                 {
@@ -111,7 +111,7 @@ class _RateDriverScreenState extends State<RateDriverScreen>
                 style: const TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Colors.green,
+                  color:  Color(0xFFF77E21),
                 ),
               ),
 
@@ -146,7 +146,7 @@ class _RateDriverScreenState extends State<RateDriverScreen>
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    primary:  Color(0xFFF77E21),
                     padding: EdgeInsets.symmetric(horizontal: 74),
                   ),
                   child: const Text(

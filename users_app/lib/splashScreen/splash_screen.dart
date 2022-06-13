@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:users_app/assistants/assistant_methods.dart';
 import 'package:users_app/authentication/login_screen.dart';
+import 'package:users_app/authentication/onbording.dart';
+import 'package:users_app/authentication/welcome.dart';
 import 'package:users_app/global/global.dart';
 import 'package:users_app/mainScreens/main_screen.dart';
 
@@ -23,16 +25,20 @@ class _MySplashScreenState extends State<MySplashScreen>
   {
     fAuth.currentUser != null ? AssistantMethods.readCurrentOnlineUserInfo() : null;
 
-    Timer(const Duration(seconds: 3), () async
+    Timer(const Duration(seconds: 7), () async
     {
       if(await fAuth.currentUser != null)
       {
         currentFirebaseUser = fAuth.currentUser;
+
         Navigator.push(context, MaterialPageRoute(builder: (c)=> MainScreen()));
+
       }
       else
       {
-        Navigator.push(context, MaterialPageRoute(builder: (c)=> LoginScreen()));
+
+        Navigator.push(context, MaterialPageRoute(builder: (c)=> Onbording()));
+
       }
     });
   }
@@ -40,31 +46,32 @@ class _MySplashScreenState extends State<MySplashScreen>
   @override
   void initState() {
     super.initState();
-    
+
     startTimer();
   }
-  
+
   @override
   Widget build(BuildContext context)
   {
     return Material(
       child: Container(
-        color: Colors.black,
+        color: Colors.white,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              Image.asset("images/logo.png"),
+              Image.asset("images/car.gif"),
 
               const SizedBox(height: 10,),
 
               const Text(
-                "Uber & inDriver Clone App",
+                "Quicki Taxi "
+                ,
                 style: TextStyle(
-                  fontSize: 24,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold
                 ),
               ),
 

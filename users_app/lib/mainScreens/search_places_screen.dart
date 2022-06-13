@@ -1,4 +1,4 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:users_app/assistants/request_assistant.dart';
 import 'package:users_app/global/map_key.dart';
 import 'package:users_app/models/predicted_places.dart';
@@ -22,7 +22,7 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
   void findPlaceAutoCompleteSearch(String inputText) async
   {
     if(inputText.length > 1) //2 or more than 2 input characters
-    {
+        {
       String urlAutoCompleteSearch = "https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$inputText&key=$mapKey&components=country:DZ";
 
       var responseAutoCompleteSearch = await RequestAssistant.receiveRequest(urlAutoCompleteSearch);
@@ -56,11 +56,11 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
           Container(
             height: 160,
             decoration: const BoxDecoration(
-              color: Colors.black54,
+              color: Colors.white,
               boxShadow:
               [
                 BoxShadow(
-                  color: Colors.white54,
+                  color: Colors.white,
                   blurRadius: 8,
                   spreadRadius: 0.5,
                   offset: Offset(
@@ -87,7 +87,7 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
                         },
                         child: const Icon(
                           Icons.arrow_back,
-                          color: Colors.grey,
+                          color: Colors.black,
                         ),
                       ),
 
@@ -96,7 +96,7 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
                           "Search & Set DropOff Location",
                           style: TextStyle(
                             fontSize: 18.0,
-                            color: Colors.grey,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -111,7 +111,7 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
 
                       const Icon(
                         Icons.adjust_sharp,
-                        color: Colors.grey,
+                        color: Colors.black,
                       ),
 
                       const SizedBox(width: 18.0,),
@@ -124,15 +124,25 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
                             {
                               findPlaceAutoCompleteSearch(valueTyped);
                             },
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                const BorderRadius.all(Radius.circular(14)),
+                                borderSide: BorderSide(
+                                    color:
+                                    Theme
+                                        .of(context)
+                                        .colorScheme
+                                        .tertiary),
+                              ),
                               hintText: "search here...",
                               fillColor: Colors.white54,
                               filled: true,
-                              border: InputBorder.none,
+
                               contentPadding: EdgeInsets.only(
-                                  left: 11.0,
-                                  top: 8.0,
-                                  bottom: 8.0,
+                                left: 11.0,
+                                top: 8.0,
+                                bottom: 8.0,
                               ),
                             ),
                           ),
@@ -149,25 +159,25 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen>
           //display place predictions result
           (placesPredictedList.length > 0)
               ? Expanded(
-                  child: ListView.separated(
-                    itemCount: placesPredictedList.length,
-                    physics: ClampingScrollPhysics(),
-                    itemBuilder: (context, index)
-                    {
-                      return PlacePredictionTileDesign(
-                        predictedPlaces: placesPredictedList[index],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index)
-                    {
-                      return const Divider(
-                        height: 1,
-                        color: Colors.white,
-                        thickness: 1,
-                      );
-                    },
-                  ),
-                )
+            child: ListView.separated(
+              itemCount: placesPredictedList.length,
+              physics: ClampingScrollPhysics(),
+              itemBuilder: (context, index)
+              {
+                return PlacePredictionTileDesign(
+                  predictedPlaces: placesPredictedList[index],
+                );
+              },
+              separatorBuilder: (BuildContext context, int index)
+              {
+                return const Divider(
+                  height: 1,
+                  color: Colors.white,
+                  thickness: 1,
+                );
+              },
+            ),
+          )
               : Container(),
         ],
       ),

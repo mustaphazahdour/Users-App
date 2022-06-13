@@ -17,7 +17,7 @@ class _AboutScreenState extends State<AboutScreen>
   Widget build(BuildContext context)
   {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: ListView(
 
         children: [
@@ -27,7 +27,7 @@ class _AboutScreenState extends State<AboutScreen>
             height: 230,
             child: Center(
               child: Image.asset(
-                "images/car_logo.png",
+                "images/car2.gif",
                 width: 260,
               ),
             ),
@@ -38,10 +38,10 @@ class _AboutScreenState extends State<AboutScreen>
 
               //company name
               const Text(
-                "Uber & inDriver Clone",
+                "Quicki Taxi",
                 style: TextStyle(
                   fontSize: 28,
-                  color: Colors.white54,
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -52,13 +52,12 @@ class _AboutScreenState extends State<AboutScreen>
 
               //about you & your company - write some info
               const Text(
-                "This app has been developed by Muhammad Ali, "
-                "This is the world number 1 ride sharing app. Available for all. "
-                "20M+ people already use this app.",
+                "This app has been developed by Group 32, "
+                "This is the world number 1 ride sharing app.",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.white54,
+                  color: Colors.black,
                 ),
               ),
 
@@ -66,16 +65,7 @@ class _AboutScreenState extends State<AboutScreen>
                 height: 10,
               ),
 
-              const Text(
-                "This app has been developed by Muhammad Ali, "
-                    "This is the world number 1 ride sharing app. Available for all. "
-                    "20M+ people already use this app.",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white54,
-                ),
-              ),
+
 
               const SizedBox(
                 height: 40,
@@ -88,7 +78,7 @@ class _AboutScreenState extends State<AboutScreen>
                   SystemNavigator.pop();
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.white54,
+                  primary: Colors.black,
                 ),
                 child: const Text(
                   "Close",
